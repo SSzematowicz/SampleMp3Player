@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Mp3MusicPlater.ListViewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Mp3MusicPlater"
+             mc:Ignorable="d"              
+             >
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ListViewItem}">
+            <Setter Property="IsSelected" 
+                    Value="{Binding IsSelected, Mode=TwoWay}"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          BorderThickness="0"
+                          PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"
+                          Grid.Column="1">
+                
+            <local:CustomListView ItemsSource="{Binding Files}" 
+                      BorderThickness="0"   
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+
+                <local:CustomListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"
+                                   Background="{StaticResource ForegroundWhiteBrush}"
+                                   />
+                    </ItemsPanelTemplate>
+                </local:CustomListView.ItemsPanel>
+
+                <local:CustomListView.ItemTemplate>
+                    <DataTemplate>
+                        <local:DirectoryListItem  />
+                    </DataTemplate>
+                </local:CustomListView.ItemTemplate>
+            </local:CustomListView>
+        </ScrollViewer>
+
+        <Button Grid.Row="1" Command="{Binding SelectCommand}">Policz</Button>
+    </Grid>
+</UserControl>

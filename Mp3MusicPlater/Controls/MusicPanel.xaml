@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="Mp3MusicPlater.MusicPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"     
+             xmlns:local="clr-namespace:Mp3MusicPlater"
+             mc:Ignorable="d" 
+              >
+    <Grid Background="Transparent">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Background="Transparent" Grid.ColumnSpan="3">
+            <Border.InputBindings>
+                <MouseBinding MouseAction="LeftClick"
+                              Command="{Binding PopupMenuAwayCommand}"/>
+            </Border.InputBindings>
+        </Border>
+        
+        <Border VerticalAlignment="Bottom" 
+                Grid.Row="0" Grid.Column="1">
+            <local:PlayListMenuControl
+            DataContext="{Binding AttachmentMenu}"
+            local:AnimateSlideFromButton.Value="{Binding DataContext.MenuVisable,
+            RelativeSource={RelativeSource FindAncestor, 
+                AncestorType=local:MusicPanel}}"
+            Grid.Column="1" Margin="-1,20,1,-20">
+                <Slider Width="200"
+                        DataContext="{Binding DataContext,
+                                        RelativeSource={RelativeSource FindAncestor, 
+                                        AncestorType=local:MusicPanel}}"
+                        Value="{Binding Volume, Mode=TwoWay}"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0 0 10 20"
+                        Style="{StaticResource ValumeSlider}"></Slider>
+            </local:PlayListMenuControl>
+            
+        </Border>
+        
+        <Border Grid.Row="1" 
+                Background="{StaticResource BackgroundDarkBrush}">
+            
+            <StackPanel Orientation="Horizontal" Grid.Row="1" >
+
+                <Button Content="{StaticResource AwesomePrev}"
+                        Style="{StaticResource PanelOptionButton}"
+                        Command="{Binding PrevSongCommand}"/>
+                
+                <Button Content="{StaticResource AwesomePlay}"
+                        Command="{Binding PlaySongCommand}"
+                        Visibility="{Binding IsPlaing, Converter={local:BollToVisableConverter}, ConverterParameter=True}"
+                        Style="{StaticResource PanelOptionButton}"/>
+                
+                <Button Content="{StaticResource AwesomePause}"
+                        Command="{Binding PlaySongCommand}"
+                        Visibility="{Binding IsPlaing, Converter={local:BollToVisableConverter}}"                        
+                        Style="{StaticResource PanelOptionButton}"/>
+                
+                <Button Content="{StaticResource AwesomeStop}" 
+                        Command="{Binding StopSongCommadn}"
+                        Style="{StaticResource PanelOptionButton}" />
+                
+                <Button Content="{StaticResource AwesomeNext}" 
+                        Style="{StaticResource PanelOptionButton}" 
+                        Command="{Binding NextSongCommand}" />
+
+            </StackPanel>
+        </Border>
+        
+        <Border Grid.Column="1" Grid.Row="1" Background="{StaticResource BackgroundDarkBrush}">
+            <StackPanel 
+                    VerticalAlignment="Center"  
+                    Orientation="Horizontal">
+                <Label FontSize="{StaticResource FontSizeRegular}" 
+                   FontFamily="{StaticResource LatoRegular}"
+                       Content="{Binding CurrentTime}"
+                   VerticalAlignment="Center"></Label>
+
+                <Slider Orientation="Horizontal" 
+                        Value="{Binding SlidePosition, Mode=TwoWay}"
+                        VerticalAlignment="Center"               
+                        Width="800"
+                        Style="{StaticResource Horizontal_Slider }" 
+                        Grid.ColumnSpan="2" />
+
+                <Label FontSize="{StaticResource FontSizeRegular}" 
+                   FontFamily="{StaticResource LatoRegular}" 
+                   Content="{Binding Dauration, Converter={local:PlayListItemToTimeConverter}}"
+                   VerticalAlignment="Center"></Label>
+
+                <!--Add new Song button-->
+                <Button Style="{StaticResource PanelOptionButton}"
+                        ToolTip="Add New Songs"
+                        Content="{StaticResource AwesomePlusIcon}"
+                        Command="{Binding AddNewSongCommand}"
+                        >
+                </Button>
+
+                <Button Style="{StaticResource PanelOptionButton}"
+                    Command="{Binding AttachmentButtoncommand}"
+                    Content="{StaticResource AwesomeVolumeIcon}" ></Button>
+                
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</UserControl>

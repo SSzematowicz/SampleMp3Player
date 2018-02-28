@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Color x:Key="ForegroundWhite">#ffffff</Color>
+    <SolidColorBrush x:Key="ForegroundWhiteBrush" Color="{StaticResource ForegroundWhite}"/>
+
+    <Color x:Key="ForegroundLight">#c4c4c4</Color>
+    <SolidColorBrush x:Key="ForegroundLightBrush" Color="{StaticResource ForegroundLight}"/>
+
+    <Color x:Key="ForegroundSmoke">#efefff</Color>
+    <SolidColorBrush x:Key="ForegroundSmokeBrush" Color="{StaticResource ForegroundSmoke}"/>
+
+    <Color x:Key="ForegroundBlue">#1a4fa5</Color>
+    <SolidColorBrush x:Key="ForegroundBlueBrush" Color="{StaticResource ForegroundBlue}"/>
+
+    <Color x:Key="SliderBefor">#4b5463</Color>
+    <SolidColorBrush x:Key="SliderBeforBrush" Color="{StaticResource SliderBefor}"/>
+
+    <Color x:Key="SliderAfter">#0643a8</Color>
+    <SolidColorBrush x:Key="SliderAfterBrush" Color="{StaticResource SliderAfter}"/>
+
+    <Color x:Key="BackgroundLightHover">#b3b5b7</Color>
+    <SolidColorBrush x:Key="BackgroundLightHoverBrush" Color="{StaticResource BackgroundLightHover}"/>
+
+    <Color x:Key="ForegrounrGreen">#72e253</Color>
+    <SolidColorBrush x:Key="ForegrounrGreenBrush" Color="{StaticResource ForegrounrGreen}"/>
+
+    <Color x:Key="BackgroundlightGrey">#8c918c</Color>
+    <SolidColorBrush x:Key="BackgroundlightGreyBrush" Color="{StaticResource BackgroundLightHover}"/>
+
+    <Color x:Key="BackgroundDark">#000000</Color>
+    <SolidColorBrush x:Key="BackgroundDarkBrush" Color="{StaticResource BackgroundDark}"/>
+
+    <Color x:Key="ForegroundHardDrive">#a8978b</Color>
+    <SolidColorBrush x:Key="ForegroundHardDriveBrush" Color="{StaticResource ForegroundHardDrive}"/>
+
+    <Color x:Key="ForegroundFolder">#f9741b</Color>
+    <SolidColorBrush x:Key="ForegroundFolderBrush" Color="{StaticResource ForegroundFolder}"/>
+</ResourceDictionary>
